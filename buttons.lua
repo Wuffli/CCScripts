@@ -1,7 +1,7 @@
 function resetScreen(monitor)
     monitor.setBackgroundColor(colors.black)
     monitor.setCursorPos(1,1)
-    monitor.setTextScale(0.5)
+    monitor.setTextScale(1)
 end
  
 Button = { name = "Button" ,
@@ -88,7 +88,7 @@ function ButtonDisplay:waitForButtonPress()
     else
         index = -1
     end
-    
+
     return index
     
 end
