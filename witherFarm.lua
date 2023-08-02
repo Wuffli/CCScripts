@@ -54,9 +54,10 @@ function buttonPressed(button)
 
     elseif button.outputDirection ~= nil then
         switchOutput(button.outputDirection)
+        checkIfAllAreOffOrOn()
     end
 
-    checkIfAllAreOffOrOn()
+    
 end
 
 
