@@ -19,10 +19,6 @@ function switchOutput(direction)
     redstone.setOutput( direction, currentOutput )
 end
 
-function xor(a, b)
-    return (a or b) and not (a and b)
-end
-
 function setAll(state)
     for index, button in ipairs(buttonsList) do
         if button.outputDirection ~= nil then
