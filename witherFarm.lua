@@ -3,6 +3,7 @@ local monitor = peripheral.find("monitor")
 
 local buttonDisplay = ButtonDisplay:new()
 buttonDisplay.monitor = monitor
+buttonDisplay.scale = 0.5
 
 local buttonsList = {
     { name = "Global Button", globalButton = true },

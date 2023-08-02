@@ -1,9 +1,3 @@
-function resetScreen(monitor)
-    monitor.setBackgroundColor(colors.black)
-    monitor.setCursorPos(1,1)
-    monitor.setTextScale(1)
-end
- 
 Button = { name = "Button" ,
         color = colors.gray,
         colorPressed = colors.lightGray,
@@ -18,7 +12,7 @@ function Button:new(object)
     return object
 end 
  
-ButtonDisplay = {monitor = nil, buttons = {} }
+ButtonDisplay = {monitor = nil, buttons = {} , scale=0.5}
  
 function ButtonDisplay:new(object)
     object = object or {}
@@ -27,6 +21,12 @@ function ButtonDisplay:new(object)
     local eventHandler = coroutine.create(self.waitForButtonPress)
     coroutine.resume(eventHandler)
     return object
+end
+
+function ButtonDisplay:resetScreen(monitor)
+    monitor.setBackgroundColor(colors.black)
+    monitor.setCursorPos(1,1)
+    monitor.setTextScale(self.scale)
 end
  
 function ButtonDisplay:newButton(name, color, colorPressed, colorText)
@@ -45,7 +45,7 @@ end
  
 function ButtonDisplay:render()
     monitor = self.monitor
-    resetScreen(monitor)
+    self.resetScreen(monitor)
     
     monitor.clear()
     
