@@ -7,7 +7,13 @@ local VirtualDisplay = {monitor = nil}
 
 
 function VirtualDisplay:new(monitor)
+    object = {}
+    setmetatable(object, self)
+    self.__index = self
+
     self.monitor = monitor
+
+    return object
 end
 
 function VirtualDisplay:setTextScale(scale)
@@ -116,6 +122,6 @@ end
 
 local monitor = peripheral.find("monitor")
 
-display = VirtualDisplay:new(monitor)
+local display = VirtualDisplay:new(monitor)
 
 display.write("Hi!")
