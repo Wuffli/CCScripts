@@ -64,7 +64,7 @@ setAll(false)
  
 while true do
     local index = buttonDisplay:waitForButtonPress()
-    buttonPressed(buttons[index])
+    buttonPressed(buttonsList[index])
     
     buttonDisplay:render()
 end
