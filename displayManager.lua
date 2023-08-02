@@ -113,3 +113,9 @@ end
 function VirtualDisplay:getPaletteColor(colour)	
     return self.monitor.getPaletteColor(colour)	
 end
+
+local monitor = peripheral.find("monitor")
+
+display = VirtualDisplay:new(monitor)
+
+display.write("Hi!")
