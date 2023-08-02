@@ -6,7 +6,7 @@ local VirtualDisplay = {monitor = nil}
 -- }
 
 
-funciton VirtualDisplay:new(monitor)
+function VirtualDisplay:new(monitor)
     self.monitor = monitor
 end
 
