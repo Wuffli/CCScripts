@@ -8,7 +8,7 @@ local buttonsList = {
     { name = "Global Button", globalButton = true },
     { name = "Wither Builder", outputDirection = "right", offState = false },
     { name = "Mob Grinders", outputDirection = "left", offState = false  },
-    { name = "Fans", outputDirection = "down", offState = false  }
+    { name = "Fans", outputDirection = "bottom", offState = false  }
     }
 
 buttonDisplay:buttonsFromList(buttonsList)
