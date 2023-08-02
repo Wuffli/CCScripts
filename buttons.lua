@@ -35,7 +35,13 @@ function ButtonDisplay:newButton(name, color, colorPressed, colorText)
         Button.name = name
     end
     table.insert(self.buttons, Button)
-end   
+end
+
+function ButtonDisplay:buttonsFromList(buttonsList)
+    for index, button in ipairs(buttonsList) do
+        self:newButton(button.name) --create Button
+    end
+end
  
 function ButtonDisplay:render()
     monitor = self.monitor
