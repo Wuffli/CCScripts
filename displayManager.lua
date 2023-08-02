@@ -7,11 +7,9 @@ local VirtualDisplay = {monitor = nil}
 
 
 function VirtualDisplay:new(monitor)
-    object = {}
+    object = {monitor = monitor}
     setmetatable(object, self)
     self.__index = self
-
-    self.monitor = monitor
 
     return object
 end
