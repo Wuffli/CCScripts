@@ -45,8 +45,9 @@ end
  
 function ButtonDisplay:render()
     monitor = self.monitor
-    self.resetScreen(monitor)
-    
+    monitor.setBackgroundColor(colors.black)
+    monitor.setCursorPos(1,1)
+    monitor.setTextScale(self.scale)
     monitor.clear()
     
     
