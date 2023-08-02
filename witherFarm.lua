@@ -27,7 +27,7 @@ function setAll(state)
     for index, button in ipairs(buttonsList) do
         if button.outputDirection ~= nil then
 
-            output = xor(state, button.offState)
+            output = not xor(state, button.offState)
             redstone.setOutput( button.outputDirection, output )
 
         end
@@ -64,9 +64,12 @@ setAll(false)
  
 while true do
     local index = buttonDisplay:waitForButtonPress()
-    buttonPressed(buttonsList[index])
+
+    if index ~= -1 then
+        buttonPressed(buttonsList[index])
     
-    buttonDisplay:render()
+        buttonDisplay:render()
+    end
 end
  
  
