@@ -122,4 +122,4 @@ monitor = peripheral.find("monitor")
 
 local display = VirtualDisplay:new(monitor)
 
-display.write("Hi!")
+display:write("Hi!")
