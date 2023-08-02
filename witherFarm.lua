@@ -26,7 +26,7 @@ function xor(a, b)
 end
 
 function setAll(state)
-    for index, button in ipairs(buttonsList)
+    for index, button in ipairs(buttonsList) do
         if button.outputDirection ~= nil then
 
             output = xor(state, button.offState)
