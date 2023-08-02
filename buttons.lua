@@ -85,7 +85,10 @@ function ButtonDisplay:waitForButtonPress()
     if index <= #self.buttons then
         self.buttons[index].isPressed = not self.buttons[index].isPressed
         --print(self.buttons[index].isPressed)
+    else
+        index = -1
     end
+    
     return index
     
 end
