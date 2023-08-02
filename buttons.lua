@@ -23,10 +23,10 @@ function ButtonDisplay:new(object)
     return object
 end
 
-function ButtonDisplay:resetScreen(monitor)
-    monitor.setBackgroundColor(colors.black)
-    monitor.setCursorPos(1,1)
-    monitor.setTextScale(self.scale)
+function ButtonDisplay:resetScreen()
+    self.monitor.setBackgroundColor(colors.black)
+    self.monitor.setCursorPos(1,1)
+    self.monitor.setTextScale(self.scale)
 end
  
 function ButtonDisplay:newButton(name, color, colorPressed, colorText)
@@ -45,7 +45,7 @@ end
  
 function ButtonDisplay:render()
     monitor = self.monitor
-    self.resetScreen(monitor)
+    self.resetScreen()
     
     monitor.clear()
     
