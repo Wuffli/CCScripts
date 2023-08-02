@@ -53,14 +53,12 @@ end
 function buttonPressed(button)
     if button.globalButton then
         globalButton()
-    end
 
     elseif button.outputDirection ~= nil then
         switchOutput(button.outputDirection)
     end
 
     checkIfAllAreOffOrOn()
-
 end
  
 
