@@ -31,6 +31,7 @@ function setAll(state)
             redstone.setOutput( button.outputDirection, state )
 
         end
+        buttonDisplay.buttons[index].isPressed = state
     end
 end
 
