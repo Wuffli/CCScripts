@@ -1,6 +1,19 @@
 local Buttons = require("buttons")
 local monitor = peripheral.find("monitor")
 
+local buttonDisplay = ButtonDisplay:new()
+buttonDisplay.monitor = monitor
+
+local buttonsList = {
+    { name = "Global Button", globalButton = true },
+    { name = "Wither Builder", outputDirection = "right", offState = false },
+    { name = "Mob Grinders", outputDirection = "left", offState = false  },
+    { name = "Fans", outputDirection = "down", offState = false  }
+    }
+
+buttonDisplay:buttonsFromList(buttonsList)
+buttonDisplay:render()
+
 function switchOutput(direction)
     local currentOutput = not redstone.getOutput(direction)
     redstone.setOutput( direction, currentOutput )
@@ -46,18 +59,7 @@ function buttonPressed(button)
     checkIfAllAreOffOrOn()
 end
 
-local buttonDisplay = ButtonDisplay:new()
-buttonDisplay.monitor = monitor
 
-local buttonsList = {
-    { name = "Global Button", globalButton = true },
-    { name = "Wither Builder", outputDirection = "right", offState = false },
-    { name = "Mob Grinders", outputDirection = "left", offState = false  },
-    { name = "Fans", outputDirection = "down", offState = false  }
-    }
-
-buttonDisplay:buttonsFromList(buttonsList)
-buttonDisplay:render()
 setAll(false)
  
 while true do
