@@ -27,8 +27,8 @@ function setAll(state)
     for index, button in ipairs(buttonsList) do
         if button.outputDirection ~= nil then
 
-            output = not xor(state, button.offState)
-            redstone.setOutput( button.outputDirection, output )
+            -- output = not xor(state, button.offState)
+            redstone.setOutput( button.outputDirection, state )
 
         end
     end
