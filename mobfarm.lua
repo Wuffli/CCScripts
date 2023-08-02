@@ -1,5 +1,4 @@
 import using local buttons = require("buttons")
-example:
  
 local Buttons = require("Buttons")
 local monitor = peripheral.find("monitor")
