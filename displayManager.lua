@@ -186,7 +186,8 @@ function Window:setCursorPosition(x, y)
 end
 
 function Window:write(text)
-    self.display:setCursorPos(self.cursorPosition.x, self.cursorPosition.y)
+    local monitorX, monitorY = windowToMonitorPosition(self.cursorPosition.x, self.cursorPosition.y)
+    self.display:setCursorPos( monitorX, monitorY )
     local result
     for i = 1, #text do
         local char = text:sub(i, i)
