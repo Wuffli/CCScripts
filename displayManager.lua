@@ -1,16 +1,9 @@
 local VirtualDisplay = {monitor = nil}
 
--- local window = { 
---     size = { x = 0, y = 0},
---     position = { topleftX = 0, topleftY = 0 }
--- }
-
-
 function VirtualDisplay:new(monitor)
     local object = {monitor = monitor}
     setmetatable(object, self)
     self.__index = self
-
     return object
 end
 
@@ -118,8 +111,72 @@ function VirtualDisplay:getPaletteColor(colour)
     return self.monitor.getPaletteColor(colour)	
 end
 
+local Window = { 
+    display = nil
+    size = { x = 1, y = 1},
+    position = { x = 1, y = 1 }, --marks the position of the top left corner of the window
+}
+
+local function Window:new()
+    local object = {}
+    setmetatable(object, self)
+    self.__index = self
+    return object
+end
+
+function VirtualDisplay:newWindow(sizeX, sizeY, posX, posY)
+    local window = Window:new()
+    window.display = self
+
+    window.size.x = sizeX or 5
+    window.size.y = sizeY or 5
+    window.position.x = posX or 1
+    window.position.y = posY or 1
+
+    return window
+end
+
+function Window:getSize()
+    return self.size[1], self.size[2]
+end
+
+function Window:setSize(x, y)
+    self.size.x = x
+    self.size.y = y
+end
+
+function Window:getPosition()
+    return self.position.x, self.position.y
+end
+
+function Window:setPosition(x, y)
+    self.position.x = x
+    self.position.y = y
+end
+
+function Window:getCursorPosition()
+    local monitorPositionX, monitorPositionY = self.display:getCursorPos()
+    local cursorPositionX, cursorPositionY = monitorPositionX - self.position.x + 1, monitorPositionY - self.position.y + 1
+    return cursorPositionX, cursorPositionY
+end
+
+function Window:setCursorPosition(x, y)
+    if x <= self.size.x and y <= self.size.y then
+        local cursorPositionX, cursorPositionY = x + self.position.x - 1, y + self.position.y - 1
+        self.display:setCursorPos(cursorPositionX, cursorPositionY)
+        return 0
+    else
+        return -1
+    end
+end
+
 monitor = peripheral.find("monitor")
 
 local display = VirtualDisplay:new(monitor)
+display:clear()
+local firstWindow = display:newWindow(5, 10, 3, 4)
+firstWindow:setCursorPosition(1, 1)
+
 
 display:write("Hi!")
+
