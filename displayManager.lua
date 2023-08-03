@@ -190,19 +190,22 @@ function Window:write(text)
     print(monitorX .. monitorY)
     self.display:setCursorPos( monitorX, monitorY )
     local result
+    local debug = ""
     for i = 1, #text do
         local char = text:sub(i, i)
+        
         if self.cursorPosition.x <= self.size.x then
             self.display:write(char)
-            print("inline")
+            debug = debug .. "i"
         else
             result = self:setCursorPosition(1, self.cursorPosition.y + 1)
-            print("break")
+            debug = debug .. "b"
         end
         if result == -1 then
             break
         end
     end
+    print(debug)
 end
 
 monitor = peripheral.find("monitor")
