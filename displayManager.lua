@@ -174,6 +174,8 @@ end
 
 
 function Window:setCursorPosition(x, y)
+    print(x .. " " .. y)
+    print(self.size.x .. " " .. self.size.y)
     if x <= self.size.x and y <= self.size.y then
         --local cursorPositionX, cursorPositionY = x + self.position.x - 1, y + self.position.y - 1
         --self.display:setCursorPos(cursorPositionX, cursorPositionY)
