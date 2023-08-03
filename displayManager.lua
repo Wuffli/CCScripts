@@ -190,6 +190,7 @@ end
 function Window:write(text)
     local monitorX, monitorY = self:windowToMonitorPosition(self.cursorPosition.x, self.cursorPosition.y)
     print(monitorX .. monitorY)
+    print(self:getCursorPosition())
     self.display:setCursorPos( monitorX, monitorY )
     local result
     local debug = ""
