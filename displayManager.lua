@@ -186,7 +186,7 @@ function Window:setCursorPosition(x, y)
 end
 
 function Window:write(text)
-    local monitorX, monitorY = windowToMonitorPosition(self.cursorPosition.x, self.cursorPosition.y)
+    local monitorX, monitorY = self:windowToMonitorPosition(self.cursorPosition.x, self.cursorPosition.y)
     self.display:setCursorPos( monitorX, monitorY )
     local result
     for i = 1, #text do
@@ -206,6 +206,6 @@ monitor = peripheral.find("monitor")
 
 local display = VirtualDisplay:new(monitor)
 display:clear()
-local firstWindow = display:newWindow(5, 10, 3, 4)
+local firstWindow = display:newWindow(24, 20, 3, 4)
 firstWindow:write("OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO")
 
