@@ -115,6 +115,7 @@ local Window = {
     display = nil,
     size = { x = 1, y = 1},
     position = { x = 1, y = 1 }, --marks the position of the top left corner of the window
+    cursorPosition = { x = 1, y = 1 }
 }
 
 function Window:new()
@@ -154,19 +155,49 @@ function Window:setPosition(x, y)
     self.position.y = y
 end
 
-function Window:getCursorPosition()
+function Window:monitorToWindowPosition(x, y)
     local monitorPositionX, monitorPositionY = self.display:getCursorPos()
-    local cursorPositionX, cursorPositionY = monitorPositionX - self.position.x + 1, monitorPositionY - self.position.y + 1
-    return cursorPositionX, cursorPositionY
+    local windowPositionX, windowPositionY = monitorPositionX - self.position.x + 1, monitorPositionY - self.position.y + 1
+    return windowPositionX, windowPositionY
 end
+
+function Window:windowToMonitorPosition(x, y)
+    local monitorPositionX, monitorPositionY = x + self.position.x - 1, y + self.position.y - 1
+    return monitorPositionX, monitorPositionY
+end
+
+function Window:getCursorPosition()
+    --local monitorPositionX, monitorPositionY = self.display:getCursorPos()
+    --local cursorPositionX, cursorPositionY = monitorPositionX - self.position.x + 1, monitorPositionY - self.position.y + 1
+    return self.cursorPosition.x, self.cursorPosition.y
+end
+
 
 function Window:setCursorPosition(x, y)
     if x <= self.size.x and y <= self.size.y then
-        local cursorPositionX, cursorPositionY = x + self.position.x - 1, y + self.position.y - 1
-        self.display:setCursorPos(cursorPositionX, cursorPositionY)
+        --local cursorPositionX, cursorPositionY = x + self.position.x - 1, y + self.position.y - 1
+        --self.display:setCursorPos(cursorPositionX, cursorPositionY)
+        self.cursorPosition.x = x
+        self.cursorPosition.y = y
         return 0
     else
         return -1
+    end
+end
+
+function Window:write(text)
+    self.display:setCursorPos(self.cursorPosition.x, self.cursorPosition.y)
+    local result
+    for i = 1, #text do
+        local char = text:sub(i, i)
+        if self.cursorPosition.x <= self.size.x then
+            self.display:write(char)
+        else
+            result = self:setCursorPosition(1, self.cursorPosition.y + 1)
+        end
+        if result == -1 then
+            break
+        end
     end
 end
 
@@ -175,8 +206,5 @@ monitor = peripheral.find("monitor")
 local display = VirtualDisplay:new(monitor)
 display:clear()
 local firstWindow = display:newWindow(5, 10, 3, 4)
-firstWindow:setCursorPosition(1, 1)
-
-
-display:write("Hi!")
+firstWindow:write("OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO")
 
