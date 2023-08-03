@@ -207,6 +207,6 @@ monitor = peripheral.find("monitor")
 
 local display = VirtualDisplay:new(monitor)
 display:clear()
-local firstWindow = display:newWindow(24, 20, 3, 4)
+local firstWindow = display:newWindow(10, 10, 25, 25)
 firstWindow:write("OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO")
 
