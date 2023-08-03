@@ -196,6 +196,7 @@ function Window:write(text)
         
         if self.cursorPosition.x <= self.size.x then
             self.display:write(char)
+            self.cursorPosition.x = self.cursorPosition.x + 1
             debug = debug .. "i"
         else
             result = self:setCursorPosition(1, self.cursorPosition.y + 1)
@@ -203,6 +204,8 @@ function Window:write(text)
         end
         if result == -1 then
             break
+        else
+            self.cursorPosition.y = self.cursorPosition.y + 1
         end
     end
     print(debug)
