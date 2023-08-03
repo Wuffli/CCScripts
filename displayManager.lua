@@ -117,7 +117,7 @@ local Window = {
     position = { x = 1, y = 1 }, --marks the position of the top left corner of the window
 }
 
-local function Window:new()
+function Window:new()
     local object = {}
     setmetatable(object, self)
     self.__index = self
