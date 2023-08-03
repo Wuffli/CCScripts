@@ -174,8 +174,6 @@ end
 
 
 function Window:setCursorPosition(x, y)
-    print(x .. " " .. y)
-    print(self.size.x .. " " .. self.size.y)
     if x <= self.size.x and y <= self.size.y then
         --local cursorPositionX, cursorPositionY = x + self.position.x - 1, y + self.position.y - 1
         --self.display:setCursorPos(cursorPositionX, cursorPositionY)
@@ -189,10 +187,8 @@ end
 
 function Window:write(text)
     local monitorX, monitorY = self:windowToMonitorPosition(self.cursorPosition.x, self.cursorPosition.y)
-    print(monitorX .. monitorY)
     self.display:setCursorPos( monitorX, monitorY )
     local result
-    local debug = ""
     for i = 1, #text do
         local char = text:sub(i, i)
         monitorX, monitorY = self:windowToMonitorPosition(self.cursorPosition.x, self.cursorPosition.y)
@@ -200,22 +196,15 @@ function Window:write(text)
         if self.cursorPosition.x <= self.size.x then
             self.display:write(char)
             self.cursorPosition.x = self.cursorPosition.x + 1
-            debug = debug .. "i"
         else
             result = self:setCursorPosition(1, self.cursorPosition.y + 1)
-            debug = debug .. "b"
             if result == -1 then
-                print("brokey")
                 break
             else
                 self.cursorPosition.y = self.cursorPosition.y + 1
             end
         end
-        
-        
-        print(self:getCursorPosition())
     end
-    print(debug)
 end
 
 monitor = peripheral.find("monitor")
