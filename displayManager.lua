@@ -193,6 +193,7 @@ function Window:write(text)
         local char = text:sub(i, i)
         if self.cursorPosition.x <= self.size.x then
             self.display:write(char)
+            print(char)
         else
             result = self:setCursorPosition(1, self.cursorPosition.y + 1)
         end
