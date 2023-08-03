@@ -112,7 +112,7 @@ function VirtualDisplay:getPaletteColor(colour)
 end
 
 local Window = { 
-    display = nil
+    display = nil,
     size = { x = 1, y = 1},
     position = { x = 1, y = 1 }, --marks the position of the top left corner of the window
 }
