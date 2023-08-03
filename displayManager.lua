@@ -195,7 +195,8 @@ function Window:write(text)
     local debug = ""
     for i = 1, #text do
         local char = text:sub(i, i)
-        
+        monitorX, monitorY = self:windowToMonitorPosition(self.cursorPosition.x, self.cursorPosition.y)
+        self.display:setCursorPos( monitorX, monitorY )
         if self.cursorPosition.x <= self.size.x then
             self.display:write(char)
             self.cursorPosition.x = self.cursorPosition.x + 1
