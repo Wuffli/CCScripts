@@ -187,13 +187,13 @@ end
 
 function Window:write(text)
     local monitorX, monitorY = self:windowToMonitorPosition(self.cursorPosition.x, self.cursorPosition.y)
+    print(monitorX .. monitorY)
     self.display:setCursorPos( monitorX, monitorY )
     local result
     for i = 1, #text do
         local char = text:sub(i, i)
         if self.cursorPosition.x <= self.size.x then
             self.display:write(char)
-            print(char)
         else
             result = self:setCursorPosition(1, self.cursorPosition.y + 1)
         end
