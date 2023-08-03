@@ -203,6 +203,7 @@ function Window:write(text)
             debug = debug .. "b"
         end
         if result == -1 then
+            print("brokey")
             break
         else
             self.cursorPosition.y = self.cursorPosition.y + 1
