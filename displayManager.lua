@@ -203,13 +203,14 @@ function Window:write(text)
         else
             result = self:setCursorPosition(1, self.cursorPosition.y + 1)
             debug = debug .. "b"
+            if result == -1 then
+                print("brokey")
+                break
+            else
+                self.cursorPosition.y = self.cursorPosition.y + 1
+            end
         end
-        if result == -1 then
-            print("brokey")
-            break
-        else
-            self.cursorPosition.y = self.cursorPosition.y + 1
-        end
+        
         
         print(self:getCursorPosition())
     end
