@@ -59,6 +59,7 @@ function draw()
     for i = 1, #prozent do
         local char = prozent:sub(i, i)
         local bg = monitor.getBackgroundColor()
+        monitor.setBackgroundColor(bg)
         monitor.write(char)
     end
 
