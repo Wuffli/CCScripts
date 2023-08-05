@@ -15,8 +15,8 @@ local newItems = 0
 
 
 
-local systemCapacityOcc = nItems/systemCapacity * 100
-local systemCapacityLeft = 100 - systemCapacityOcc
+local systemCapacityOcc = 0
+local systemCapacityLeft = 0
 
 local width, height = monitor.getSize()
 
@@ -30,6 +30,9 @@ function calculate()
     for _, item in pairs(items) do
         nItems = nItems + item.amount
     end
+
+    systemCapacityOcc = nItems/systemCapacity * 100
+    systemCapacityLeft = 100 - systemCapacityOcc
 
     newItems = nItems - currentItems
     currentItems = nItems
@@ -48,7 +51,7 @@ function draw()
     monitor.write(math.floor(systemCapacityOcc * 100)/100 .. "%")
 end
 
-while True do
+while true do
     calculate()
     draw()
 end
