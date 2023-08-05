@@ -55,7 +55,7 @@ function draw()
     local oldTerm = term.redirect(oldTerm)
 
     monitor.setCursorPos(math.floor(width / 2) - 2, height -2)
-    local prozent = systemCapacityOcc .. "%"
+    local prozent = math.floor(100*math.systemCapacityOcc)/100 .. "%"
     for i = 1, #prozent do
         local char = prozent:sub(i, i)
         local bg = monitor.getBackgroundColor()
