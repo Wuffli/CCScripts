@@ -48,11 +48,11 @@ function draw()
 
 
     local oldTerm = term.redirect(monitor)
-    paintutils.drawFilledBox(2, hight -4, width-1, 4, colors.gray)
-    paintutils.drawFilledBox(3, hight -4, systemCapacityOcc/(100/(width-2)), 4, colors.red)
+    paintutils.drawFilledBox(2, hight -4, width-1, hight -1, colors.gray)
+    paintutils.drawFilledBox(3, hight -4, systemCapacityOcc/(100/(width-2)), hight -1, colors.red)
     local oldTerm = term.redirect(oldTerm)
 
-    monitor.setCursorPos(3, 3)
+    monitor.setCursorPos(4, hight -3)
     monitor.write(math.floor(systemCapacityOcc * 100)/100 .. "%")
 
     monitor.setCursorPos(15, 10)
