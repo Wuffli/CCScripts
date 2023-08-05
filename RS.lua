@@ -13,6 +13,7 @@ local currentItems = 0
 local newItems = 0
 local systemCapacityOcc = 0
 local systemCapacityLeft = 0
+local oldTime = 0
 
 local width, height = monitor.getSize()
 
@@ -37,8 +38,17 @@ function calculate()
     systemCapacityOcc = nItems/systemCapacity * 100
     systemCapacityLeft = 100 - systemCapacityOcc
 
+    local current_time = os.time()
+    timeDiff = os.time() - oldTime
+    if os.time() - oldTime < 0 then
+        timeDiff = timeDiff + 24
+    end
+    timeDiff = timeDiff * 50
+
     newItems = nItems - currentItems
+    itemsPerSecond = newItems/timeDiff
     currentItems = nItems
+    oldTime = os.time()
 
 end
 
@@ -65,6 +75,8 @@ function draw()
 
     monitor.setCursorPos(15, 10)
     monitor.write(math.floor(newItems))
+    monitor.setCursorPos(16, 10)
+    monitor.write(math.floor(itemsPerSecond))
 end
 
 while true do
