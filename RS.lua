@@ -56,7 +56,8 @@ function draw()
 
     monitor.setCursorPos(math.floor(width / 2) - 2, height -2)
     local prozent = systemCapacityOcc .. "%"
-    for index, char in ipairs(prozent) do
+    for i = 1, #prozent do
+        local char = prozent:sub(i, i)
         local bg = monitor.getBackgroundColor()
         monitor.write(char)
     end
