@@ -43,11 +43,13 @@ function calculate()
 end
 
 function draw()
+    monitor.setBackgroundColor(colors.black)
     monitor.clear()
 
+
     local oldTerm = term.redirect(monitor)
-    paintutils.drawFilledBox(2, 2, width-1, 4, colors.gray)
-    paintutils.drawFilledBox(2, 2, systemCapacityOcc/(100/(width-2)), 4, colors.red)
+    paintutils.drawFilledBox(2, hight -4, width-1, 4, colors.gray)
+    paintutils.drawFilledBox(3, hight -4, systemCapacityOcc/(100/(width-2)), 4, colors.red)
     local oldTerm = term.redirect(oldTerm)
 
     monitor.setCursorPos(3, 3)
