@@ -11,10 +11,6 @@ local items = {}
 local nItems = 0
 local currentItems = 0
 local newItems = 0
-
-
-
-
 local systemCapacityOcc = 0
 local systemCapacityLeft = 0
 
@@ -24,6 +20,13 @@ local width, height = monitor.getSize()
 
 
 function calculate()
+
+    systemCapacity = 0
+    items = {}
+    nItems = 0
+    systemCapacityOcc = 0
+    systemCapacityLeft = 0
+
     systemCapacity = rs.getMaxItemDiskStorage() + rs.getMaxItemExternalStorage()
     items = rs.listItems()
 
@@ -49,6 +52,9 @@ function draw()
 
     monitor.setCursorPos(3, 3)
     monitor.write(math.floor(systemCapacityOcc * 100)/100 .. "%")
+
+    monitor.setCursorPos(15, 10)
+    monitor.write(math.floor(newItems))
 end
 
 while true do
