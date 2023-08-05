@@ -85,6 +85,8 @@ function draw()
     monitor.setCursorPos(15, 12)
     monitor.write(math.floor(biggetItemsPerSecond))
 end
+calculate()
+biggetItemsPerSecond = 0
 
 while true do
     calculate()
