@@ -49,7 +49,7 @@ function draw()
 
     local oldTerm = term.redirect(monitor)
     paintutils.drawFilledBox(2, height -6, width-1, height -1, colors.gray)
-    paintutils.drawFilledBox(5, height -5, systemCapacityOcc/(100/(width-3)), height -2, colors.red)
+    paintutils.drawFilledBox(5, height -5, math.roof(systemCapacityOcc/100 * width-4), height -2, colors.red)
     paintutils.drawFilledBox(2, height -6, 2, height -1, colors.gray)
     paintutils.drawFilledBox(1, height -6, 1, height -1, colors.black)
     local oldTerm = term.redirect(oldTerm)
