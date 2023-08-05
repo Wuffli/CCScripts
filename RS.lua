@@ -14,6 +14,7 @@ local newItems = 0
 local systemCapacityOcc = 0
 local systemCapacityLeft = 0
 local oldTime = 0
+local itemsPerSecond = 0
 
 local width, height = monitor.getSize()
 
