@@ -76,7 +76,7 @@ function draw()
 
     monitor.setCursorPos(15, 10)
     monitor.write(math.floor(newItems))
-    monitor.setCursorPos(16, 10)
+    monitor.setCursorPos(15, 11)
     monitor.write(math.floor(itemsPerSecond))
 end
 
