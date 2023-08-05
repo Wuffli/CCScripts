@@ -15,6 +15,7 @@ local systemCapacityOcc = 0
 local systemCapacityLeft = 0
 local oldTime = 0
 local itemsPerSecond = 0
+local biggetItemsPerSecond = 0
 
 local width, height = monitor.getSize()
 
@@ -48,6 +49,9 @@ function calculate()
 
     newItems = nItems - currentItems
     itemsPerSecond = newItems/timeDiff
+    if itemsPerSecond > biggetItemsPerSecond then
+        biggetItemsPerSecond = itemsPerSecond
+    end
     currentItems = nItems
     oldTime = os.time()
 
@@ -78,6 +82,8 @@ function draw()
     monitor.write(math.floor(newItems))
     monitor.setCursorPos(15, 11)
     monitor.write(math.floor(itemsPerSecond))
+    monitor.setCursorPos(15, 12)
+    monitor.write(math.floor(biggetItemsPerSecond))
 end
 
 while true do
