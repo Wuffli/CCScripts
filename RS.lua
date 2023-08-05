@@ -53,10 +53,13 @@ function draw()
     paintutils.drawFilledBox(2, height -6, 2, height -1, colors.gray)
     paintutils.drawFilledBox(1, height -6, 1, height -1, colors.black)
     local oldTerm = term.redirect(oldTerm)
-    monitor.setBackgroundColor(colors.black)
 
     monitor.setCursorPos(math.floor(width / 2) - 2, height -2)
-    monitor.write(math.floor(systemCapacityOcc * 100)/100 .. "%")
+    local prozent = systemCapacityOcc .. "%"
+    for index, char in ipairs(prozent) do
+        local bg = monitor.getBackgroundColor()
+        monitor.write(char)
+    end
 
     monitor.setCursorPos(15, 10)
     monitor.write(math.floor(newItems))
