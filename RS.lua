@@ -54,7 +54,7 @@ function draw()
     paintutils.drawFilledBox(1, height -6, 1, height -1, colors.black)
     local oldTerm = term.redirect(oldTerm)
 
-    monitor.setCursorPos(math.floor(width / 2) - 2, height -2)
+    monitor.setCursorPos(math.floor(width / 2) - 2, height -3)
     local prozent = math.floor(100*systemCapacityOcc)/100 .. "%"
     for i = 1, #prozent do
         local char = prozent:sub(i, i)
