@@ -106,12 +106,12 @@ function draw()
         monitor.write(char)
     end
 
-    monitor.setCursorPos(15, 10)
-    monitor.write(math.floor(newItems))
-    monitor.setCursorPos(15, 11)
-    monitor.write(math.floor(itemsPerSecond))
-    monitor.setCursorPos(15, 12)
-    monitor.write(math.floor(biggetItemsPerSecond))
+    
+    monitor.setCursorPos(1, 1)
+    monitor.write(math.floor(math.floor(biggetItemsPerSecond/1000) .. "k"))
+    
+    monitor.setCursorPos(1, height - 10)
+    monitor.write(math.floor("0k"))
 
     for index, value in ipairs(graphEntries) do
         yValue = height - 10 - math.floor((height - 10) / biggetItemsPerSecond * value)
