@@ -113,8 +113,7 @@ function draw()
 
     local oldTerm = term.redirect(monitor)
     for index, value in ipairs(graphEntries) do
-        yValue = height - 8 - math.floor(height - 8 / biggetItemsPerSecond * value)
-        print(yValue)
+        yValue = height - 10 - math.floor(height - 10 / biggetItemsPerSecond * value)
         paintutils.drawPixel(index + 3, yValue, colors.red)
     end
     local oldTerm = term.redirect(oldTerm)
