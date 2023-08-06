@@ -38,6 +38,7 @@ function updateGraph()
     
         newItems = newItems + nItems - currentItems
         itemsPerSecond = newItems/timeDiff
+        print(itemsPerSecond)
         
         if itemsPerSecond > biggetItemsPerSecond then
             biggetItemsPerSecond = itemsPerSecond
