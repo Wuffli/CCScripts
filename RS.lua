@@ -23,7 +23,7 @@ local graphSizeX, graphSizeY = width - 5, 20
 local graphEntries = {}
 
 for i = 1, graphSizeX do
-    table.insert(graphEntries, 0)
+    table.insert(graphEntries, i, 0)
 end
 
 function updateGraph()
