@@ -30,15 +30,7 @@ end
 -- end
 
 function updateGraph()
-    local current_time = os.time()
-    timeDiff = os.time() - oldTime
-    if os.time() - oldTime < 0 then
-        timeDiff = timeDiff + 24
-    end
-
-    timeDiff = timeDiff * 50
-    newItems = newItems + nItems - currentItems
-    currentItems = nItems
+    
     if timeDiff > 10 then
     
         
@@ -76,6 +68,16 @@ function calculate()
 
     systemCapacityOcc = nItems/systemCapacity * 100
     systemCapacityLeft = 100 - systemCapacityOcc
+
+    local current_time = os.time()
+    timeDiff = os.time() - oldTime
+    if os.time() - oldTime < 0 then
+        timeDiff = timeDiff + 24
+    end
+
+    timeDiff = timeDiff * 50
+    newItems = newItems + nItems - currentItems
+    currentItems = nItems
 
     
     
