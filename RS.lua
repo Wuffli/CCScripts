@@ -32,6 +32,10 @@ function updateGraph()
     if os.time() - oldTime < 0 then
         timeDiff = timeDiff + 24
     end
+    print(nItems .. " nitems")
+    print(newItems .. " newItems")
+    print(currentItems .. " currentItems")
+
     timeDiff = timeDiff * 50
     newItems = newItems + nItems - currentItems
     print(timeDiff)
