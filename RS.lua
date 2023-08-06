@@ -19,6 +19,34 @@ local biggetItemsPerSecond = 0
 
 local width, height = monitor.getSize()
 
+local graphSizeX, graphSizeY = width - 5, 20
+local graphEntries = {}
+
+for i = 1, graphSizeX do
+    table.insert(graphEntries, 0)
+end
+
+function updateGraph()
+    local current_time = os.time()
+    timeDiff = os.time() - oldTime
+    if os.time() - oldTime < 0 then
+        timeDiff = timeDiff + 24
+    end
+    timeDiff = timeDiff * 50
+    if timeDiff > 120
+    
+        newItems = newItems + nItems - currentItems
+        itemsPerSecond = newItems/timeDiff
+        
+        if itemsPerSecond > biggetItemsPerSecond then
+            biggetItemsPerSecond = itemsPerSecond
+        end
+
+        oldTime = os.time()
+
+    end
+    
+end
 
 
 
@@ -40,20 +68,9 @@ function calculate()
     systemCapacityOcc = nItems/systemCapacity * 100
     systemCapacityLeft = 100 - systemCapacityOcc
 
-    local current_time = os.time()
-    timeDiff = os.time() - oldTime
-    if os.time() - oldTime < 0 then
-        timeDiff = timeDiff + 24
-    end
-    timeDiff = timeDiff * 50
-
-    newItems = nItems - currentItems
-    itemsPerSecond = newItems/timeDiff
-    if itemsPerSecond > biggetItemsPerSecond then
-        biggetItemsPerSecond = itemsPerSecond
-    end
+    
     currentItems = nItems
-    oldTime = os.time()
+    
 
 end
 
@@ -90,6 +107,7 @@ biggetItemsPerSecond = 0
 
 while true do
     calculate()
+    updateGraph()
     draw()
 end
 
