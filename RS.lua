@@ -33,7 +33,7 @@ function updateGraph()
         timeDiff = timeDiff + 24
     end
     timeDiff = timeDiff * 50
-    if timeDiff > 120 then
+    if timeDiff > 10 then
     
         newItems = newItems + nItems - currentItems
         itemsPerSecond = newItems/timeDiff
