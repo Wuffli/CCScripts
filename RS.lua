@@ -33,12 +33,13 @@ function updateGraph()
         timeDiff = timeDiff + 24
     end
     timeDiff = timeDiff * 50
+    newItems = newItems + nItems - currentItems
     print(timeDiff)
     if timeDiff > 10 then
     
-        newItems = newItems + nItems - currentItems
+        
         itemsPerSecond = newItems/timeDiff
-        print(itemsPerSecond)
+        print(itemsPerSecond .. " items")
         
         if itemsPerSecond > biggetItemsPerSecond then
             biggetItemsPerSecond = itemsPerSecond
