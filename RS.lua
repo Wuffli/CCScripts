@@ -33,6 +33,7 @@ function updateGraph()
         timeDiff = timeDiff + 24
     end
     timeDiff = timeDiff * 50
+    print(timeDiff)
     if timeDiff > 10 then
     
         newItems = newItems + nItems - currentItems
