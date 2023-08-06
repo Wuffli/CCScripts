@@ -49,6 +49,7 @@ function updateGraph()
         if itemsPerSecond > biggetItemsPerSecond then
             biggetItemsPerSecond = itemsPerSecond
         end
+        newItems = 0
 
         oldTime = os.time()
 
