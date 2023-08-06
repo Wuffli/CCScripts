@@ -32,19 +32,16 @@ function updateGraph()
     if os.time() - oldTime < 0 then
         timeDiff = timeDiff + 24
     end
-    print(nItems .. " nitems")
-    print(newItems .. " newItems")
-    print(currentItems .. " currentItems")
 
     timeDiff = timeDiff * 50
     newItems = newItems + nItems - currentItems
     currentItems = nItems
-    print(timeDiff)
     if timeDiff > 10 then
     
         
         itemsPerSecond = newItems/timeDiff
-        print(itemsPerSecond .. " items")
+        table.remove(graphEntries = {}, 1)
+        table.insert(graphEntries = {}, itemsPerSecond)
         
         if itemsPerSecond > biggetItemsPerSecond then
             biggetItemsPerSecond = itemsPerSecond
@@ -114,7 +111,7 @@ function draw()
     local oldTerm = term.redirect(monitor)
     for index, value in ipairs(graphEntries) do
         yValue = height - 8 - (height - 8 / biggetItemsPerSecond * value)
-        paintutils.drawFilledBox(index + 3, yValue, index + 3, yValue, colors.red)
+        paintutils.drawPixel(index + 3, yValue, colors.red)
     end
     local oldTerm = term.redirect(oldTerm)
 end
