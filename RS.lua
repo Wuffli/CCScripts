@@ -31,7 +31,7 @@ end
 
 function updateGraph()
     
-    if timeDiff > 1 then
+    if timeDiff > 0.5 then
     
         
         itemsPerSecond = newItems/timeDiff
