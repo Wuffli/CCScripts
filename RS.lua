@@ -123,6 +123,7 @@ end
 
 calculate()
 biggetItemsPerSecond = 0
+newItems = 0
 
 while true do
     calculate()
