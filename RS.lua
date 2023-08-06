@@ -109,17 +109,25 @@ function draw()
     
     monitor.setCursorPos(1, 1)
     monitor.write(math.floor(biggetItemsPerSecond/1000) .. "k")
+
+    
     
     monitor.setCursorPos(1, height - 10)
     monitor.write("0k")
-
+    local yValue
+    local value
     for index, value in ipairs(graphEntries) do
+        value = value
         yValue = height - 10 - math.floor((height - 11) / biggetItemsPerSecond * value)
         print(value)
         local oldTerm = term.redirect(monitor)
-        paintutils.drawPixel(index + 3, yValue, colors.red)
+        paintutils.drawPixel(index + 3, yValue, colors.blue)
         local oldTerm = term.redirect(oldTerm)
     end
+    monitor.setBackgroundColor(colors.black)
+    monitor.setCursorPos(5, 1)
+    monitor.write(math.floor("items/s"))
+
 end
 
 
