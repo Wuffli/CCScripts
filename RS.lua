@@ -110,7 +110,16 @@ function draw()
     monitor.write(math.floor(itemsPerSecond))
     monitor.setCursorPos(15, 12)
     monitor.write(math.floor(biggetItemsPerSecond))
+
+    local oldTerm = term.redirect(monitor)
+    for index, value in ipairs(graphEntries) do
+        yValue = height - 8 - (height - 8 / biggetItemsPerSecond * value)
+        paintutils.drawFilledBox(index + 3, yValue, index + 3, yValue, colors.red)
+    end
+    local oldTerm = term.redirect(oldTerm)
 end
+
+
 calculate()
 biggetItemsPerSecond = 0
 
