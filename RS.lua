@@ -126,7 +126,7 @@ function draw()
     end
     monitor.setBackgroundColor(colors.black)
     monitor.setCursorPos(5, 1)
-    monitor.write(math.floor("items/s"))
+    monitor.write("items/s")
 
 end
 
