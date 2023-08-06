@@ -40,8 +40,8 @@ function updateGraph()
     
         
         itemsPerSecond = newItems/timeDiff
-        table.remove(graphEntries = {}, 1)
-        table.insert(graphEntries = {}, itemsPerSecond)
+        table.remove(graphEntries, 1)
+        table.insert(graphEntries, itemsPerSecond)
         
         if itemsPerSecond > biggetItemsPerSecond then
             biggetItemsPerSecond = itemsPerSecond
