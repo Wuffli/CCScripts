@@ -25,6 +25,9 @@ local graphEntries = {}
 for i = 1, graphSizeX do
     table.insert(graphEntries, i, 0)
 end
+for index, value in ipairs(graphEntries) do
+    print(value)
+end
 
 function updateGraph()
     local current_time = os.time()
