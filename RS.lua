@@ -25,9 +25,9 @@ local graphEntries = {}
 for i = 1, graphSizeX do
     table.insert(graphEntries, i, 0)
 end
-for index, value in ipairs(graphEntries) do
-    print(value)
-end
+-- for index, value in ipairs(graphEntries) do
+--     print(value)
+-- end
 
 function updateGraph()
     local current_time = os.time()
@@ -111,12 +111,13 @@ function draw()
     monitor.setCursorPos(15, 12)
     monitor.write(math.floor(biggetItemsPerSecond))
 
-    local oldTerm = term.redirect(monitor)
     for index, value in ipairs(graphEntries) do
         yValue = height - 10 - math.floor(height - 10 / biggetItemsPerSecond * value)
+        print(yValue)
+        local oldTerm = term.redirect(monitor)
         paintutils.drawPixel(index + 3, yValue, colors.red)
+        local oldTerm = term.redirect(oldTerm)
     end
-    local oldTerm = term.redirect(oldTerm)
 end
 
 
