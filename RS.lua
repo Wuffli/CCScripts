@@ -38,6 +38,7 @@ function updateGraph()
 
     timeDiff = timeDiff * 50
     newItems = newItems + nItems - currentItems
+    currentItems = nItems
     print(timeDiff)
     if timeDiff > 10 then
     
@@ -76,7 +77,7 @@ function calculate()
     systemCapacityLeft = 100 - systemCapacityOcc
 
     
-    currentItems = nItems
+    
     
 
 end
